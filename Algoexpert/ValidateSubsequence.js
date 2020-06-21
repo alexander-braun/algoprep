@@ -22,7 +22,7 @@ function isValidSubsequence(array, sequence) {
   return true;
 }
 
-// Naive second
+// Naive second 7min
 function isValidSubsequence(array, sequence) {
   let val1 = sequence[0];
   while (array.indexOf(val1) > 0 || val1 === array[0]) {
@@ -30,11 +30,9 @@ function isValidSubsequence(array, sequence) {
       sequence.shift();
       val1 = sequence[0];
     }
-
     if (sequence.length === 0) {
       return true;
     }
-
     array.shift();
   }
   return false;
