@@ -12,3 +12,19 @@ function twoNumberSum(array, targetSum) {
 
   return pairs;
 }
+
+// Solution 2 -> with hash
+function twoNumberSum(array, targetSum) {
+  let pairs = [];
+  let hash = [];
+  for (const element of array) {
+    let targetVal = targetSum - element;
+    if (hash.indexOf(targetVal) !== -1) {
+      return [targetVal, element];
+    } else {
+      hash.push(element);
+    }
+  }
+
+  return pairs;
+}
