@@ -1,0 +1,44 @@
+Memory:
+    - stored in memory slots
+    - 1 slot = 8 bits = 1 byte
+    - information stored in 0s and 1s in binary sytem
+    - more information then 8 bits is stored in back to back memory slots f.e. a 32bit integer is stored in 4 bytes / 64bit in 8 slots
+    - f.e. 3 32bit integers = 12 memory slots
+    - integers are always stored as "fixed-width" - 32bit integer will always be stored as 32bit - always 4 memory slots
+    - more numbers like lists are stored under each other:
+        -> 2 32bit integers are stored in 8 memory slots (4 + 4)
+    - pointers(a variable stored in another memory slot):
+        -> f.e. a binary value in slot 1 can represent a variable stored in slot 20
+        - can store a value for a slot "far away"
+    - accessing a memory slot is a cheap operation
+
+Big O Notation:
+    -how fast an algorithm runs as the input increases
+    -refers to worst case
+
+    a = [....]
+    => 1 + a[0] -> speed not affected -> O(1) -> constant time complexity
+    => O(log(N)) -> logarithmic time complexity
+    => sum(a) -> speed affected but not that much -> O(N) -> linear time complexity (as many iterations as there are elements)
+    => O(N*log(N)) 
+    => pair(a) -> very visibly affected -> O(N²) / O(N³...) ->  exponential time complexity
+    => O(2^n)
+    => O(N!) -> factorial
+
+    ▪ Logarithmic algorithm – O(logn) – Binary Search.
+    ▪ Linear algorithm – O(n) – Linear Search.
+    ▪ Superlinear algorithm – O(nlogn) – Heap Sort, Merge Sort.
+    ▪ Polynomial algorithm – O(n^c) – Strassen’s Matrix Multiplication, Bubble Sort, Selection Sort, Insertion Sort, Bucket Sort.
+    ▪ Exponential algorithm – O(c^n) – Tower of Hanoi.
+    ▪ Factorial algorithm – O(n!) – Determinant Expansion by Minors, Brute force Search algorithm for Traveling Salesman
+
+Logarithm:
+    -log b (x) = y if b^y = x
+    -in computer science base is always 2
+    -log(N) = y if 2^y = N
+    -log(4) = 2
+    
+
+Space-Complexity:
+
+Time-Complexity:

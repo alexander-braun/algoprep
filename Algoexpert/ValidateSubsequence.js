@@ -37,3 +37,31 @@ function isValidSubsequence(array, sequence) {
   }
   return false;
 }
+
+// Algosolution O(n)
+function isValidSubsequence(array, sequence) {
+  arrIdx = 0;
+  seqIdx = 0;
+
+  while (arrIdx < array.length && seqIdx < sequence.length) {
+    if (array[arrIdx] === sequence[seqIdx]) {
+      seqIdx += 1;
+    }
+    arrIdx += 1;
+  }
+
+  return seqIdx === sequence.length;
+}
+
+// Algosolution O(n)
+function isValidSubsequence(array, sequence) {
+  let seqIdx = 0;
+  for (const val of array) {
+    if (seqIdx === sequence.length) return true;
+    if (sequence[seqIdx] === val) {
+      seqIdx += 1;
+    }
+  }
+
+  return seqIdx === sequence.length;
+}
