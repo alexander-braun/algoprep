@@ -14,7 +14,7 @@ function nodeDepths(root) {
   return runningDepth;
 }
 
-//Recursive
+//Recursive O(n) Time / O(h) space
 function nodeDepths(root, depth = 0) {
   if (!root) return 0;
   return (
