@@ -14,5 +14,21 @@ function getNthFib(n) {
     count++;
   }
 
-  return lastTwo[lastTwo.length - 1];
+  return lastTwo.pop();
+}
+
+//Algosolution recursive 1 O(2^n) Time / O(n) space
+function getNthFib(n) {
+  if (n === 2) return 1;
+  else if (n === 1) return 0;
+  else return getNthFib(n - 1) + getNthFib(n - 2);
+}
+
+//Algosolution 2 recursive with memoization O(n) time / O(n) space
+function getNthFib(n, cache = { 1: 0, 2: 1 }) {
+  if (n in cache) return cache[n];
+  else {
+    cache[n] = getNthFib(n - 1, cache) + getNthFib(n - 2, cache);
+    return cache[n];
+  }
 }
