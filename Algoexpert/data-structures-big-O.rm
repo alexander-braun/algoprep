@@ -1,0 +1,149 @@
+Memory:
+    - stored in memory slots
+    - 1 slot = 8 bits = 1 byte
+    - information stored in 0s and 1s in binary sytem
+    - more information then 8 bits is stored in back to back memory slots f.e. a 32bit integer is stored in 4 bytes / 64bit in 8 slots
+    - f.e. 3 32bit integers = 12 memory slots
+    - integers are always stored as "fixed-width" - 32bit integer will always be stored as 32bit - always 4 memory slots
+    - more numbers like lists are stored under each other:
+        -> 2 32bit integers are stored in 8 memory slots (4 + 4)
+    - pointers(a variable stored in another memory slot):
+        -> f.e. a binary value in slot 1 can represent a variable stored in slot 20
+        - can store a value for a slot "far away"
+    - accessing a memory slot is a cheap operation
+
+Big O Notation:
+    -how fast an algorithm runs as the input increases
+    -refers to worst case
+
+    a = [....]
+    => 1 + a[0] -> speed not affected -> O(1) -> constant time complexity
+    => O(log(N)) -> logarithmic time complexity
+    => sum(a) -> speed affected but not that much -> O(N) -> linear time complexity (as many iterations as there are elements)
+    => O(N*log(N)) 
+    => pair(a) -> very visibly affected -> O(N²) / O(N³...) ->  exponential time complexity
+    => O(2^n)
+    => O(N!) -> factorial
+
+    ▪ Logarithmic algorithm – O(logn) – Binary Search.
+    ▪ Linear algorithm – O(n) – Linear Search.
+    ▪ Superlinear algorithm – O(nlogn) – Heap Sort, Merge Sort.
+    ▪ Polynomial algorithm – O(n^c) – Strassen’s Matrix Multiplication, Bubble Sort, Selection Sort, Insertion Sort, Bucket Sort.
+    ▪ Exponential algorithm – O(c^n) – Tower of Hanoi.
+    ▪ Factorial algorithm – O(n!) – Determinant Expansion by Minors, Brute force Search algorithm for Traveling Salesman
+
+Logarithm:
+    -log b (x) = y if b^y = x
+    -in computer science base is always 2
+    -log(N) = y if 2^y = N
+    -log(4) = 2
+    -log(N) -> if N increases log(N) only increases by a tiny amount -> when N doubles log(N) only increases by 1 -> 2^4 = 16 / 2^5 = 32 -> N
+    -As the input doubles - the amount of operations neccessary only increases by 1 -> better then linear
+
+    f.e. algorithm cutting array in half [1,2,3,4,5,6] -> [1,2,3] -> [1,2] -> [1] -> log(N)
+    -am I eliminating half of the input every step of the function? -> log(N)
+
+Arrays:
+    -static and dynamic arrays
+    -array[x] -> get: looks up the x't memory address and is a very fast operation O(1)
+    -array[x] = y -> set: is the same O(1) constant time, it just overwrites the chosen memory slots
+    -let arr = [a, b, c] -> initializing: array is O(N) as when the array elements increase, the amount of time/space increases to set them
+    -for(el of arr) -> traversing through an array is O(N) Time and O(1) Space complexity
+    -let arr = [a, b, c]; let arr2 = arr -> copying an Array takes O(N) Time and Space
+    -arr.push(x) -> insertion into an array means copying/shiftig the array into free memory slots O(N)Time and o(1)Space
+    
+    dynamic array: can change in size -> under the hood has faster insertions, allocates twice as much memory as needed (more or less)
+    -when array is filled the new copy when inserting will have double the space again aso
+    -time complexity is O(1) for dynamic array insertion
+    -unshift in js -> O(N)
+    -popping -> O(1)
+    -shift -> O(N)
+
+Linked Lists:
+    -similar to array, different in how it is stored in memory
+    -use pointers to store values in memory
+    -each node in the linked list has a pointer to the next node in the linked list
+    -so opposite to arrays the memory slots don't have to be back to back
+    -First Element = Head of linked list
+    -get: Finding an index in a linked list means traversing through the linked list until the index -> O(i) till i'th node, O(1)Space
+    -set: O(i) Time, O(1) Space
+    -initialize: O(N) Space Time -> basically does the same as in array
+    -copying: O(N) Space Time
+    -traverse: O(N) Time O(1) Space
+    -insertion/deletion: only pointers get swapped/shifted -> constant time O(1) when Head changes -> O(i) when index is found where insertion happens
+    -double linked list has each two pointers to new nodes
+
+Hash-Tables:
+    -build on top of arrays -> each index maps to a linked list of potential values
+    -hashfunction transforms key into index
+    -support constant time operations in average but if there are index collisions O(N) time because linked lists have to be transformed/searched
+    -usually hashing functions in the real world are very powerfull to minimize collisions so O(1) constant time
+
+Stacks and Queues:
+    Stacks
+        -list of elements
+        -supports iserting and removing elements
+        -last in first out principle LIFO
+    Queue
+        -list of elements
+        -first in first out principle FIFO
+    Space Time:
+        -O(1) Constant Time Space insertion/deletion
+        -Storing Stack/Queue O(N) Time,  O(1) Space
+    -Queue implemented with linked list
+    -Stacks implemented with array
+
+Strings:
+    -every character encoded and stored in memory by a fixed width integer
+    -traversing: O(N) Time, O(1) Space
+    -copying: O(N) Space Time
+    -getChar: O(1) Space Time
+    -mostly immutable (f.e. in javascript)
+    -"abc" += "xyz" -> creates new string by copying and adding together = O(N) Space Time
+    -recommended to split to array to work on a lot of strings in constant time
+
+Graphs:
+    -Collection of nodes that may or may not be connected with each other
+    -Nodes are called verticies
+    -Connections are called edges
+    -connected/unconnected Graphs
+        -> only connected if all nodes are reachable
+    -directed/undirected Graphs
+        -> directed graphs show directed connections
+    -graphs with cycles are cyclic graphs else acyclic graphs
+    -usually used in code as an adjacency list
+        ->store list of nodes in a graph
+        ->every node stores a list of adjacent edges
+    -traversing graphs:
+        -> depth first search
+            -traversing deeper first
+            -go through all connections of a node deep first then wide
+        -> breadth first search
+            -go wide first: don't explore the connections immediatly but the nodes
+    -traversing = O(vertex + edges) = O(v+e)
+
+Trees:
+    -type of graph
+    -rooted graph structure with root node
+    -nodes have child nodes
+    -direction away from root
+    -acyclic - no cicles
+    -each node can only have one parent
+    -not allowed to have disconnected parts
+    Binary Tree:
+        -every node at most 2 child nodes
+        -nodes on the right are bigger then nodes on the left
+    Ternary Tree:
+        -every node at most 3 child nodes
+    k-ary trees:
+        -every node at most k child nodes
+    traversing: O(N) for all nodes
+    traversing: O(log(N)) always going down one subtree
+    -balanced trees: roughly O(log(N)) time complexity for every branch
+    -every path that starts at the root and ends at the bottom node is a branch
+    -every bottom node is a leaf-node
+    -tree has levels 
+    -complete tree if every level is filled up 
+    -full if every node has either no or exactly k children
+    -perfect tree: all leaf nodes have same depth -> completly filled up
+
