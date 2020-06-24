@@ -1,3 +1,5 @@
+//O(n) time / O(depth) space
+
 function validateBst(tree) {
   // Write your code here.
   return validateBstHelper(tree, -Infinity, Infinity);
