@@ -6,8 +6,6 @@ class BST {
   }
 
   insert(value) {
-    // Write your code here.
-    // Do not edit the return statement of this method.
     if (value < this.value) {
       if (this.left === null) {
         this.left = new BST(value);
@@ -25,7 +23,6 @@ class BST {
   }
 
   contains(value) {
-    // Write your code here.
     if (value < this.value) {
       if (this.left === null) {
         return false;
@@ -38,14 +35,10 @@ class BST {
       } else {
         return this.right.contains(value);
       }
-    } else {
-      return true;
-    }
+    } else return true;
   }
 
   remove(value, parent = null) {
-    // Write your code here.
-    // Do not edit the return statement of this method.
     if (value < this.value) {
       if (this.left !== null) {
         this.left.remove(value, this);
@@ -54,7 +47,9 @@ class BST {
       if (this.right !== null) {
         this.right.remove(value, this);
       }
+      //If it's the value to be removed
     } else {
+      //If node has children
       if (this.left !== null && this.right !== null) {
         this.value = this.right.getMinValue();
         this.right.remove(this.value, this);
@@ -65,7 +60,7 @@ class BST {
           this.left = this.left.left;
         } else if (this.right !== null) {
           this.value = this.right.value;
-          this.left = this.right.left;
+          this.right = this.right.left;
           this.right = this.right.right;
         } else {
         }
@@ -75,7 +70,6 @@ class BST {
         parent.right = this.left !== null ? this.left : this.right;
       }
     }
-    return this;
   }
 
   getMinValue() {
@@ -85,17 +79,20 @@ class BST {
       return this.left.getMinValue();
     }
   }
+
+  show() {
+    console.log(this);
+  }
 }
 
-let tree = new BST(20);
-tree.insert(10);
-tree.insert(20);
-tree.insert(40);
+let tree = new BST(1);
 tree.insert(1);
-tree.insert(10);
-tree.insert(20);
-tree.insert(40);
-tree.insert(1);
-console.log(tree);
+tree.insert(0);
+tree.insert(3);
+console.log(tree.contains(3));
+console.log(tree.contains(5));
+tree.remove(3);
+console.log(tree.contains(3));
+tree.show();
 
-//Do 'node BinarySearchTreeConstruction.js'
+//node BSTConstructor_medium_example.js
