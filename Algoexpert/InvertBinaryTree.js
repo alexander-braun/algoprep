@@ -10,7 +10,6 @@ function swapBranch(tree) {
   tree.right = left;
   swapBranch(tree.left);
   swapBranch(tree.right);
-  return tree;
 }
 
 //Algo solution
