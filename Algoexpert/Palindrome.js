@@ -29,3 +29,16 @@ function isPalindrome(string, i = 0) {
     return string[i] === string[j] && isPalindrome(string, i + 1);
   }
 }
+
+function missingNumber(arr) {
+  let hash = {};
+  for (let i = 0; i < arr.length; i++) {
+    hash[arr[i]] = 0;
+  }
+
+  if (!(0 in hash)) return 0;
+
+  for (let i = 0; i < arr.length + 1; i++) {
+    if (!(i in hash)) return i;
+  }
+}
