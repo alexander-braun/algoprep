@@ -5,7 +5,6 @@
 var luckyNumbers  = function(matrix) {
     
   let rows = []
-  
   for(let row of matrix) {
       const max = Math.min(...row)
       rows.push(max)
